@@ -1,0 +1,24 @@
+@startuml
+
+interface Pedido {
+    + entregar(): void
+}
+
+class PedidoComida {
+    + entregar(): void
+}
+
+class PedidoSupermercado {
+    + entregar(): void
+}
+
+class PedidoFactory {
+    + crearPedido(tipo: String): Pedido
+}
+
+Pedido <|.. PedidoComida
+Pedido <|.. PedidoSupermercado
+
+PedidoFactory ..> Pedido : crea
+
+@enduml

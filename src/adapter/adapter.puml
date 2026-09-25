@@ -1,0 +1,21 @@
+@startuml
+
+interface ProcesarPago {
+    + procesarPago(monto: double): void
+}
+
+class PasarelaExterna {
+    + realizarTransaccion(importe: double): void
+}
+
+class PasarelaPagoAdapter {
+    - pasarelaExterna: PasarelaExterna
+    + PasarelaPagoAdapter(pasarelaExterna: PasarelaExterna)
+    + procesarPago(monto: double): void
+}
+
+ProcesarPago <|.. PasarelaPagoAdapter
+
+PasarelaPagoAdapter --> PasarelaExterna : adapta
+
+@enduml

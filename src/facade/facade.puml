@@ -1,0 +1,21 @@
+@startuml
+
+class ValidadorPedido {
+    + validar(): void
+}
+
+class ProcesadorPedido {
+    + procesar(): void
+}
+
+class SistemaPedidos {
+    - validador: ValidadorPedido
+    - procesador: ProcesadorPedido
+    + SistemaPedidos()
+    + realizarPedido(): void
+}
+
+SistemaPedidos --> ValidadorPedido : utiliza
+SistemaPedidos --> ProcesadorPedido : utiliza
+
+@enduml

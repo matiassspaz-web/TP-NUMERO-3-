@@ -1,0 +1,57 @@
+@startuml
+
+interface Menu {
+    + mostrarMenu(): void
+}
+
+interface MetodoPago {
+    + pagar(): void
+}
+
+class MenuTradicional {
+    + mostrarMenu(): void
+}
+
+class MenuPremium {
+    + mostrarMenu(): void
+}
+
+class PagoTradicional {
+    + pagar(): void
+}
+
+class PagoPremium {
+    + pagar(): void
+}
+
+interface DeliveryFactory {
+    + crearMenu(): Menu
+    + crearMetodoPago(): MetodoPago
+}
+
+class DeliveryFactoryTradicional {
+    + crearMenu(): Menu
+    + crearMetodoPago(): MetodoPago
+}
+
+class DeliveryFactoryPremium {
+    + crearMenu(): Menu
+    + crearMetodoPago(): MetodoPago
+}
+
+Menu <|.. MenuTradicional
+Menu <|.. MenuPremium
+
+MetodoPago <|.. PagoTradicional
+MetodoPago <|.. PagoPremium
+
+DeliveryFactory <|.. DeliveryFactoryTradicional
+DeliveryFactory <|.. DeliveryFactoryPremium
+
+DeliveryFactoryTradicional ..> MenuTradicional : crea
+DeliveryFactoryTradicional ..> PagoTradicional : crea
+
+DeliveryFactoryPremium ..> MenuPremium : crea
+DeliveryFactoryPremium ..> PagoPremium : crea
+
+@enduml

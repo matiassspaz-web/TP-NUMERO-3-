@@ -1,0 +1,13 @@
+@startuml
+
+class ConfiguracionDelivery {
+    - instancia: ConfiguracionDelivery
+    - moneda: String
+    - costoEnvioBase: double
+    - ConfiguracionDelivery()
+    + getInstancia(): ConfiguracionDelivery
+    + getMoneda(): String
+    + getCostoEnvioBase(): double
+}
+
+@enduml

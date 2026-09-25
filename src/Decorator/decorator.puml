@@ -1,0 +1,37 @@
+@startuml
+
+interface ServicioDelivery {
+    + calcularCosto(): double
+    + obtenerDescripcion(): String
+}
+
+class PedidoBasico {
+    + calcularCosto(): double
+    + obtenerDescripcion(): String
+}
+
+abstract class ServicioDecorator {
+    # servicio: ServicioDelivery
+    + calcularCosto(): double
+    + obtenerDescripcion(): String
+}
+
+class EnvioExpress {
+    + calcularCosto(): double
+    + obtenerDescripcion(): String
+}
+
+class SeguroPedido {
+    + calcularCosto(): double
+    + obtenerDescripcion(): String
+}
+
+ServicioDelivery <|.. PedidoBasico
+ServicioDelivery <|.. ServicioDecorator
+
+ServicioDecorator <|-- EnvioExpress
+ServicioDecorator <|-- SeguroPedido
+
+ServicioDecorator --> ServicioDelivery : envuelve
+
+@enduml
